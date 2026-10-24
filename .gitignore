@@ -1,0 +1,67 @@
+
+# ==============================
+# Python virtual environments
+# ==============================
+backend/venv/
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+
+# ==============================
+# Machine learning model weights
+# ==============================
+*.keras
+*.h5
+*.onnx
+*.tflite
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# ==============================
+# Node.js dependencies
+# ==============================
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
+# ==============================
+# Secrets and environment files
+# ==============================
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# ==============================
+# Uploaded videos and datasets
+# ==============================
+uploads/
+temp/
+tmp/
+datasets/
+data/
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# ==============================
+# Python and application logs
+# ==============================
+*.log
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ==============================
+# Editor and operating system files
+# ==============================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.git-backup/
