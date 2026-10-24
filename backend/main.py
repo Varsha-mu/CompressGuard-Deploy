@@ -21,7 +21,7 @@ MODEL_PATH = Path(__file__).parent / MODEL_FILENAME
 
 IMG_SIZE = 224
 MAX_VIDEO_SIZE = 500 * 1024 * 1024
-FRAMES_TO_SAMPLE = 8
+FRAMES_TO_SAMPLE = 4
 
 # Your exported model should accept one RGB frame
 # with pixel values in the range [0, 255].
@@ -167,9 +167,14 @@ async def analyze_video(video: UploadFile = File(...)):
         if not batch:
             raise HTTPException(400, "No frames could be extracted.")
 
-        predictions = model.predict(
-            np.stack(batch), verbose=0
-        ).reshape(-1)
+        predictions = []
+
+        for frame in batch:
+            frame_input = np.expand_dims(frame, axis=0)
+            prediction = model.predict(frame_input, verbose=0).reshape(-1)
+            predictions.append(float(prediction[0]))
+
+        predictions = np.array(predictions, dtype=np.float32)
 
         results = []
 
